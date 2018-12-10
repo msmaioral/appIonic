@@ -14,31 +14,29 @@
 
 
 <ion-content padding>
-  <div>
-      <h1 class="feed_title">{{ nomeUsuario }}</h1>
-  </div>
-    <ion-card>
+  
+    <ion-card *ngFor="let filme of lista_filmes">
 
         <ion-item>
           <ion-avatar item-start>
             <img src="../../assets/imgs/marty-avatar.png">
           </ion-avatar>
-          <h2>{{objeto_feed.nome}}</h2>
-          <p>{{objeto_feed.data}}</p>
+          <h2>{{filme.original_title}}</h2>
+          <p>{{filme.release_date}}</p>
         </ion-item>
       
-        <img src="../../assets/imgs/advance-card-bttf.png">
+        <img [src]="'https://image.tmdb.org/t/p/w500/'+ filme.backdrop_path">
       
         <ion-card-content>
         
-          <p>{{objeto_feed.descricao}}</p>
+          <p>{{filme.overview}}</p>
         </ion-card-content>
       
         <ion-row>
           <ion-col>
             <button ion-button icon-start clear small>
               <ion-icon name="thumbs-up"></ion-icon>
-              <div>{{objeto_feed.qntd_likes}}</div>
+              <div>{{filme.qntd_likes}}</div>
             </button>
           </ion-col>
           <ion-col>

@@ -28,6 +28,8 @@ export class FeedPage {
      qntd_comments:"4 Comments",
      time_comment:"11h ago"
   }
+  public lista_filmes = new Array<any>();
+
   public nomeUsuario:string ="Charles França do Codigo";
 
   constructor(
@@ -44,7 +46,10 @@ export class FeedPage {
   ionViewDidLoad() {
     this.movieProvider.getLatestMovies().subscribe(
       data=>{
-        console.log(data);
+        const response = (data as any);
+        const objeto_retorno = JSON.parse(response._body);
+        this.lista_filmes = objeto_retorno.results;
+        console.log(objeto_retorno);
         
       },error=>{
         console.log(error);
